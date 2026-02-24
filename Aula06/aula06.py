@@ -52,8 +52,11 @@ print("CARNAVAL" in texto8)
 print(texto8.find("estudando")) # 31
 print(texto8[31]) # e
 
-print(texto8.count("a"))
+
 
 texto9 = "Eu amo Java"
+print(texto9.startswith("Eu"))
+print(texto9.endswith("va"))
+
 print(texto9.startswith("Eu"))
 print(texto9.endswith("va"))
