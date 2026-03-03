@@ -11,6 +11,6 @@ while i <= 4:
     usuario["notas"][i] = input("Digite a nota: ")
     i+=1
 
-nota=0
-for valor in usuario["notas"]:
-    nota += valor
+# nota=0
+# for valor in usuario["notas"]:
+#     nota += valor
