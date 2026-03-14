@@ -19,12 +19,12 @@ aluno = {
 
 # mostrar o dicionario principal
 print(aluno)
-# # retorna nome do aluno
-# print(aluno["nome_aluno"])
-# # retorna o array
-# print(aluno["Array"])
-# # retorna o endereco, estamos acessando um dicionario dentro de outro dicionario
-# print(aluno["endereco"])
+# retorna nome do aluno
+print(aluno["nome_aluno"])
+# retorna o array
+print(aluno["Array"])
+# retorna o endereco, estamos acessando um dicionario dentro de outro dicionario
+print(aluno["endereco"])
 # # acessar apenas um unico campo do dicionario endereco
 # print(aluno["endereco"]["estado"])
 # # acessando campo especifico dentro de um array
