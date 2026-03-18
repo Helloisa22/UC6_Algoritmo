@@ -20,16 +20,16 @@ excel = pd.DataFrame(dados)
 # LOC > NUMERO
 # Ler o excel
 leitura_excel = pd.read_excel("Aula12\cadastro_alunos.xlsx")
-# nova_linha = len(leitura_excel)
+nova_linha = len(leitura_excel)
 
-# leitura_excel.loc[nova_linha, "nome"] = dados["nome"]
-# leitura_excel.loc[nova_linha, "idade"] = dados["idade"]
-# leitura_excel.loc[nova_linha, "altura"] = dados["altura"]
+leitura_excel.loc[nova_linha, "nome"] = dados["nome"]
+leitura_excel.loc[nova_linha, "idade"] = dados["idade"]
+leitura_excel.loc[nova_linha, "altura"] = dados["altura"]
 
 # print(leitura_excel["nome"])
 
 # APAGAR LINHAS DE UMA PLANILHA
-# leitura_excel = leitura_excel.drop(5)
+leitura_excel = leitura_excel.drop(5)
 
 leitura_excel.loc[4, "nome"] = dados["nome"]
 leitura_excel.loc[4, "idade"] = dados["idade"]
