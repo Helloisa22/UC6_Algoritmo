@@ -1,4 +1,5 @@
 import pymysql as pySQL
+import pandas as pd
 
 # CONEXAO COM O BANCO DE DADOS
 conexao = pySQL.connect(
@@ -12,23 +13,22 @@ conexao = pySQL.connect(
 # Cria o cursor — versão dicionário (retorna {"coluna": valor})
 cursor = conexao.cursor(pySQL.cursors.DictCursor)
 
-
 # ── Buscar todos os registros ───────────────
 cursor.execute("SELECT * FROM clientes")
 todos = cursor.fetchall()
+# Monta a lista FORA do loop
+base_dados = []
 
-# for cliente in todos:
-#     print(cliente["nome"],"-", cliente["email"],"-", cliente["telefone"])
+for cliente in todos:
+    base_dados.append({
+        "nome": cliente["nome"],
+        "email":  cliente["email"]
+    })
+    print(base_dados)
 
-# ── Buscar um único registro por ID ────────
-# cursor.execute("SELECT * FROM clientes WHERE id_cliente = 1")
-# cliente = cursor.fetchone()
-# print(cliente) # {'id': 1, 'nome': 'Maria', 'email': '...'}
 
-# ── Buscar com filtro dinâmico (SEGURO) ────
-nome_busca = "Ursula%"
-cursor.execute("SELECT * FROM clientes WHERE nome LIKE %s", (nome_busca),)
-
-resultado = cursor.fetchall()
-
-print(resultado)
+excel = pd.DataFrame(base_dados)
+excel.to_excel("Aula13\Teste.xlsx", index=False)
+print("Ação Finalizada....")
+cursor.close()
+conexao.close()
