@@ -44,14 +44,11 @@ opcao = int(input("R: "))
 # - cpf
 # - tipo_conta
 if opcao == 1:
-    # dados_cliente["nome_cliente"] = input("Nome completo: ")
-    # dados_cliente["cpf"] = input("CPF: ")
-    # dados_cliente["tipo_conta"] = input("Tipo da conta que deseja criar:  ")
+    dados_cliente["nome_cliente"] = str(input("Nome completo: "))
+    dados_cliente["cpf"] = int(input("CPF: "))
+    dados_cliente["tipo_conta"] = str(input("Tipo da conta que deseja criar:  "))
     
     if not os.path.exists(caminho_excel):
-        dados_cliente["nome_cliente"] = str(input("Nome completo: "))
-        dados_cliente["cpf"] = int(input("CPF: "))
-        dados_cliente["tipo_conta"] = str(input("Tipo da conta que deseja criar:  "))
 
         dados_cliente["numero_conta"] = 0
         dados_cliente["agencia"] = 400
@@ -64,32 +61,24 @@ if opcao == 1:
         excel.to_excel(caminho_excel, index=False)
 
     else:
-        dados_cliente["nome_cliente"] = input("Nome completo: ")
-        dados_cliente["cpf"] = input("CPF: ")
-        dados_cliente["tipo_conta"] = input("Tipo da conta que deseja criar:  ")
-        
-        # - numero_conta = Será gerada de forma sequencial começando do 0 até 100
-        # for valor in lista_clientes:
-        #     valor["numero_conta"] += 1
-        
-        # # - agencia = será gerado de forma sequencial começando do 400 até 700
-        # for valor in lista_clientes:
-        #     valor["agencia"] += 1
 
         excel = pd.read_excel(caminho_excel)
 
         nova_linha = len(excel)
-
-        dados_cliente["numero_conta"] += 1
-        dados_cliente["agencia"] += 1
+        ultima_linha = excel.iloc[-1]
 
         excel.loc[nova_linha, "nome_cliente"] = dados_cliente["nome_cliente"]
         excel.loc[nova_linha, "cpf"] = dados_cliente["cpf"]
         excel.loc[nova_linha, "tipo_conta"] = dados_cliente["tipo_conta"]
-        excel.loc[nova_linha, "numero_conta"] = dados_cliente["numero_conta"]
-        excel.loc[nova_linha, "agencia"] = dados_cliente["agencia"]
+        excel.loc[nova_linha, "numero_conta"] = ultima_linha["numero_conta"] + 1
+        excel.loc[nova_linha, "agencia"] = ultima_linha["agencia"] + 1
 
-        excel.to_excel(caminho_excel)
+        excel.to_excel(caminho_excel, index=False)
 
-else:
-    print("Erro")
+elif opcao == 2:
+#  2 - Acessar conta > É necessário que o usuário passe os seguites dados:
+# - cpf
+# - numero_conta
+# > Precisa percorrer o excel e encontra o cliente com os mesmo dados de cpf e numero_conta caso encontre o cliente na base retornar uma mensagem: "Bem-vindo "nome_cliente" ao banco Tabajara" SENAO se o usuario não existir na base então retornamos uma mensagem "Usuário não encontrado, tentar novamente ou realizar o cadastro"
+    dados_cliente["cpf"] = int(input("CPF: "))
+    dados_cliente["cpf"] = int(input("CPF: "))

@@ -1,0 +1,11 @@
+class ->> Define a criação da classe (Nome do arquivo pode ser divergente do nome da classe_
+from modelos import Aluno
+#     ↑              ↑
+#    arquivo.py    nome da classe dentro do arquivo
+
+
+__init__ ->> Serve para informar a criação de um construtor ( construtor serve como molde sobre quais dados o meu arquivo/classe vai trabalhar)
+
+self ->> Self serve como o this no Java é quando eu quero especificar quais variáveis pertencem ao método construtor e o que eu devo compartilhar para fora da minha classe/arquivo
+
+Métodos que servem como funções que a classe pode executar
